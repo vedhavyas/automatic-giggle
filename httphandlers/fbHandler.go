@@ -59,6 +59,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 				sendMessage(fbModel, "Failed to Send RAP :(")
 			}else {
 				sendMessage(fbModel, "RAP Sent :-D")
+				sendMessage(fbModel, "Type \"rap\" to start a Request a Payment flow. Again!")
 			}
 			w.WriteHeader(http.StatusOK)
 			return
