@@ -20,8 +20,13 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	}
 
-	fmt.Println(fbModel.Entry[0].Messaging[0].Message.Text)
-	sendMessage(fbModel, "Text received, echo: Hello,"+fbModel.Entry[0].Messaging[0].Message.Text)
+	text := fbModel.Entry[0].Messaging[0].Message.Text
+	if text == ""{
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+	sendMessage(fbModel, "hello, "+text)
+	w.WriteHeader(http.StatusOK)
 }
 
 func sendMessage(fbModel *models.FBModel, text string) {
