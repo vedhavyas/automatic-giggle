@@ -28,8 +28,8 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	s = append(s, text)
-	for data := range s {
-		fmt.Println(data)
+	for i := range s {
+		fmt.Println("data - "+s[i])
 	}
 	sendMessage(fbModel, text)
 }
@@ -51,7 +51,6 @@ func sendMessage(fbModel *models.FBModel, text string) {
 	}
 
 	defer resp.Body.Close()
-	fmt.Println("response Status:", resp.Status)
 	fmt.Println("response Headers:", resp.Header)
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println("response Body:", string(body))
