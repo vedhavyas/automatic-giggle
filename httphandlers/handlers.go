@@ -231,19 +231,6 @@ func pushToDropBox(w http.ResponseWriter, r *http.Request)  {
 	w.WriteHeader(http.StatusOK)
 }
 
-func fbHook(w http.ResponseWriter, r *http.Request) {
-	fmt.Println(r)
-	fmt.Println(r.Body)
-	req,err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		fmt.Println(err)
-	}else {
-		fmt.Println(string(req))
-	}
-	
-	w.WriteHeader(http.StatusOK)
-}
-
 type spreadsheetResponse struct {
 	Url string `json:"url"`
 
