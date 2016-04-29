@@ -34,9 +34,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 		read = true
 		sendMessage(fbModel, "Enter Phone Number")
 		return
-	}
-
-	if read {
+	} else if read {
 		s = append(s, text)
 		if len(s) == 1 {
 			sendMessage(fbModel, "Enter purpose")
@@ -56,6 +54,9 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusOK)
 			return
 		}
+	} else {
+		sendMessage(fbModel, "I did not have that feature yet. Wait for it bitch :p")
+		return 
 	}
 
 }
