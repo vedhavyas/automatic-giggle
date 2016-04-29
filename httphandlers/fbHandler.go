@@ -22,12 +22,11 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	dat, _ :=json.MarshalIndent(fbModel,"", " ")
 	fmt.Println(string(dat))
 	text := fbModel.Entry[0].Messaging[0].Message.Text
-	if text == ""{
+	if text == "stop"{
 		w.WriteHeader(http.StatusOK)
 		return
 	}
-	sendMessage(fbModel, "hello, "+text)
-	w.WriteHeader(http.StatusOK)
+	sendMessage(fbModel, text)
 }
 
 func sendMessage(fbModel *models.FBModel, text string) {
