@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"io/ioutil"
 	"strconv"
+	"strings"
 )
 
 var pageToken = "EAAIOkn4DvqABAAaBaiZAXbxHHzEcYsEfrBBFM0QRAZC8ZCAZChKXMtlcK8wTSegMcJxv03fWRbPlOBF8mz460dB2HcJA8M8Ut8FYZBt0TiZBrZBwVRJZB0T1kxyGSLbj0P9tQsnoR3qwswDx0rlhdJQbQoZAc8WYidLUDyrDYmnFJ9QZDZD"
@@ -25,11 +26,12 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	dat, _ :=json.MarshalIndent(fbModel,"", " ")
 	fmt.Println(string(dat))
 	text := fbModel.Entry[0].Messaging[0].Message.Text
+	text = strings.ToLower(text)
 	if text == "" {
 		return
 	}
 
-	if text == "RAP"{
+	if text == "rap"{
 		s = nil
 		read = true
 		sendMessage(fbModel, "Enter Phone Number")
