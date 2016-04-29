@@ -92,6 +92,7 @@ func requestPayment(s []string) error {
 	}
 
 	defer resp.Body.Close()
+	fmt.Println(resp.StatusCode)
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println("response Body:", string(body))
 	return nil
