@@ -94,9 +94,14 @@ func requestPayment(fbModel *models.FBModel, s []string) error {
 		failureRAP := &models.RAPFailure{}
 		json.NewDecoder(resp.Body).Decode(failureRAP)
 		if len(failureRAP.Message.Amount) == 0{
-			sendMessage(fbModel, failureRAP.Message.Phone[0])
+			for i := range failureRAP.Message.Phone {
+				sendMessage(fbModel, failureRAP.Message.Phone[i])
+			}
+
 		}else {
-			sendMessage(fbModel, failureRAP.Message.Amount[0])
+			for i := range failureRAP.Message.Amount {
+				sendMessage(fbModel, failureRAP.Message.Amount[i])
+			}
 		}
 	}
 	sendMessage(fbModel, "Type \"rap\" to start a Request a Payment flow. Again!")
