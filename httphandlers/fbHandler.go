@@ -30,7 +30,7 @@ func sendMessage(fbModel *models.FBModel, text string) {
 	payload := models.FBPayload{Message:message, Recipient: recipient}
 	data, _ := json.Marshal(payload)
 	fmt.Println(string(data))
-	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(data))
+	req, _ := http.NewRequest("POST", url, bytes.NewReader(data))
 	client := http.Client{}
 	resp, err :=client.Do(req)
 	if err != nil {
