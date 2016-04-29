@@ -46,9 +46,13 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 			return
 		} else {
 			sendMessage(fbModel, "Sending RAP")
-			requestPayment(s)
+			err := requestPayment(s)
 			read = false
-			sendMessage(fbModel, "RAP Sent :-D")
+			if err != nil{
+				sendMessage(fbModel, "Failed to Send RAP :(")
+			}else {
+				sendMessage(fbModel, "RAP Sent :-D")
+			}
 			w.WriteHeader(http.StatusOK)
 			return
 		}
@@ -56,11 +60,11 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func requestPayment(s []string) {
+func requestPayment(s []string) error {
 	url := "https://www.instamojo.com/api/1.1/payment-requests/"
 	apikey := "4cb7fe8523302dc1a78dbddddcb7c6c1"
 	authToken := "c7c46720938f41b1c82de53d4d8c745e"
-	rap := models.RAP{Phone:s[0], Purpose:s[1], Amount:s[2]}
+	rap := models.RAP{Phone:s[0], Purpose:s[1], Amount:s[2], SendSMS:true}
 	data, _ := json.Marshal(rap)
 	fmt.Println(string(data))
 	req, _ := http.NewRequest("POST", url, bytes.NewReader(data))
@@ -70,13 +74,13 @@ func requestPayment(s []string) {
 	client := http.Client{}
 	resp, err := client.Do(req)
 	if err != nil{
-		fmt.Println(err)
-		return
+		return err
 	}
 
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println("response Body:", string(body))
+	return nil
 }
 
 func sendMessage(fbModel *models.FBModel, text string) {

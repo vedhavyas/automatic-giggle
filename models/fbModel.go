@@ -39,5 +39,6 @@ type RAP struct {
 	Phone string `json:"phone"`
 	Purpose string `json:"purpose"`
 	Amount string `json:"amount"`
+	SendSMS bool `json:"send_sms"`
 
 }
