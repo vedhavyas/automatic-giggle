@@ -34,3 +34,10 @@ type FBPayload struct {
 	Recipient FBRecipient `json:"recipient"`
 	Message MessageModel `json:"message"`
 }
+
+type RAP struct {
+	Phone string `json:"phone"`
+	Purpose string `json:"purpose"`
+	Amount string `json:"amount"`
+
+}

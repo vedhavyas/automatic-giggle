@@ -32,7 +32,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	if text == "RAP"{
 		s = nil
 		read = true
-		sendMessage(fbModel, "Enter Phone/Email")
+		sendMessage(fbModel, "Enter Phone Number")
 		return
 	}
 
@@ -46,12 +46,36 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 			return
 		} else {
 			sendMessage(fbModel, "Sending RAP")
-			s = nil
+			requestPayment(s)
 			read = false
+			w.WriteHeader(http.StatusOK)
 			return
 		}
 	}
 
+}
+
+func requestPayment(s []string) {
+	url := "https://www.instamojo.com/api/1.1/payment-requests/"
+	apikey := "4cb7fe8523302dc1a78dbddddcb7c6c1"
+	authToken := "c7c46720938f41b1c82de53d4d8c745e"
+	rap := models.RAP{Phone:s[0], Purpose:s[1], Amount:s[2]}
+	data, _ := json.Marshal(rap)
+	fmt.Println(string(data))
+	req, _ := http.NewRequest("POST", url, bytes.NewReader(data))
+	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("X-Api-Key", apikey)
+	req.Header.Add("X-Auth-Token", authToken)
+	client := http.Client{}
+	resp, err := client.Do(req)
+	if err != nil{
+		fmt.Println(err)
+		return
+	}
+
+	defer resp.Body.Close()
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println("response Body:", string(body))
 }
 
 func sendMessage(fbModel *models.FBModel, text string) {
@@ -71,7 +95,6 @@ func sendMessage(fbModel *models.FBModel, text string) {
 	}
 
 	defer resp.Body.Close()
-	fmt.Println("response Headers:", resp.Header)
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println("response Body:", string(body))
 }

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f980e7a5-7048-4f2e-9752-f2d5442ec1b8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/httphandlers/fbHandler.go" afterPath="$PROJECT_DIR$/httphandlers/fbHandler.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/fbModel.go" afterPath="$PROJECT_DIR$/models/fbModel.go" />
     </list>
     <ignored path="Instamojo++.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,8 +43,8 @@
       <file leaf-file-name="fbHandler.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/httphandlers/fbHandler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1753247">
-              <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.15584415">
+              <caret line="50" column="51" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
               <folding>
                 <element signature="e#22#144#0" expanded="true" />
               </folding>
@@ -55,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/models/fbModel.go">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -654,15 +655,15 @@
     <entry file="file://$PROJECT_DIR$/models/fbModel.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/httphandlers/fbHandler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1753247">
-          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.15584415">
+          <caret line="50" column="51" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
           <folding>
             <element signature="e#22#144#0" expanded="true" />
           </folding>
