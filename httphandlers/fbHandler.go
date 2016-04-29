@@ -25,10 +25,11 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 
 func sendMessage(fbModel *models.FBModel, text string) {
 	url := "https://graph.facebook.com/v2.6/me/messages?access_token="+pageToken
-	message := models.MessageModel{Text:text}
-	recipient := models.FBRecipient{ID:string(fbModel.Entry[0].ID)}
-	payload := models.FBPayload{Message:message, Recipient: recipient}
+	//message := models.MessageModel{Text:text}
+	//recipient := models.FBRecipient{ID:string(fbModel.Entry[0].ID)}
+	payload := models.FBPayload{Message:text, Recipient: string(fbModel.Entry[0].ID)}
 	data, _ := json.Marshal(payload)
+	fmt.Println(string(data))
 	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(data))
 	client := http.Client{}
 	resp, err :=client.Do(req)

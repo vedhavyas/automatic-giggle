@@ -31,6 +31,6 @@ type FBRecipient struct {
 }
 
 type FBPayload struct {
-	Recipient FBRecipient `json:"recipient"`
-	Message MessageModel `json:"message"`
+	Recipient string `json:"recipient"`
+	Message string `json:"message"`
 }
