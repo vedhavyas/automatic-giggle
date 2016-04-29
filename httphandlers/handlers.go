@@ -161,7 +161,8 @@ func addToSpreadSheet(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.WriteHeader(http.StatusOK)
+	//w.WriteHeader(http.StatusOK)
+	pushToDropBox(w, r)
 }
 
 func saveDropBoxAuthToken(w http.ResponseWriter, r *http.Request)  {
@@ -202,10 +203,11 @@ func getDropBoxToken(userId string) (string, error) {
 }
 
 func pushToDropBox(w http.ResponseWriter, r *http.Request)  {
-	userId := r.FormValue("user_id")
-	if userId == "" {
-		log.Fatal("user id nil")
-	}
+	//userId := r.FormValue("user_id")
+	//if userId == "" {
+	//	log.Fatal("user id nil")
+	//}
+	userId := "123456"
 	token, err := getDropBoxToken(userId)
 	if err != nil {
 		log.Fatal(err)
