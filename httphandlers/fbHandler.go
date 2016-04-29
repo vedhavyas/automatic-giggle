@@ -15,6 +15,8 @@ var pageToken = "EAAIOkn4DvqABAAaBaiZAXbxHHzEcYsEfrBBFM0QRAZC8ZCAZChKXMtlcK8wTSe
 func fbHook(w http.ResponseWriter, r *http.Request) {
 	fbModel := &models.FBModel{}
 	err := json.NewDecoder(r.Body).Decode(fbModel)
+	dat, _ :=ioutil.ReadAll(r.Body)
+	fmt.Println(string(dat))
 	if err!= nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusOK)
