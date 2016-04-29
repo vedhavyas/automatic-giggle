@@ -52,7 +52,6 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 			sendMessage(fbModel, "Enter amount")
 			return
 		} else {
-			read = false
 			sendMessage(fbModel, "Sending RAP")
 			requestPayment(fbModel, s)
 			w.WriteHeader(http.StatusOK)
@@ -86,7 +85,6 @@ func requestPayment(fbModel *models.FBModel, s []string) error {
 	}
 
 	defer resp.Body.Close()
-	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println(resp.StatusCode)
 	if resp.StatusCode == 201 {
 		successRap := &models.RAPSuccess{}
@@ -102,7 +100,6 @@ func requestPayment(fbModel *models.FBModel, s []string) error {
 		}
 	}
 	sendMessage(fbModel, "Type \"rap\" to start a Request a Payment flow. Again!")
-	fmt.Println("response Body:", string(body))
 	return nil
 }
 
