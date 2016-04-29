@@ -37,6 +37,11 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 		sendMessage(fbModel, "Enter Phone Number")
 		return
 	} else if read {
+		if text == "cancel"{
+			sendMessage(fbModel, "Okay, Done :-D")
+			sendMessage(fbModel, "Type \"rap\" to start a Request a Payment flow!")
+			return
+		}
 		s = append(s, text)
 		if len(s) == 1 {
 			sendMessage(fbModel, "Enter purpose")
@@ -58,6 +63,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 		}
 	} else {
 		sendMessage(fbModel, "I do not have that feature yet. Wait for it bitch :p")
+		sendMessage(fbModel, "Type \"rap\" to start a Request a Payment flow!")
 		return
 	}
 
