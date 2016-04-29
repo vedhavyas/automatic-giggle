@@ -234,6 +234,7 @@ func pushToDropBox(w http.ResponseWriter, r *http.Request)  {
 func fbHook(w http.ResponseWriter, r *http.Request) {
 	var b []byte
 	r.Body.Read(b)
+	fmt.Println(r)
 	fmt.Println(string(b))
 	w.WriteHeader(http.StatusOK)
 }
