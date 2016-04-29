@@ -60,7 +60,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	} else {
 		s = nil
 		read = false
-		sendMessage(fbModel, "I do not have that feature yet. Wait for it bitch :p")
+		sendMessage(fbModel, "I do not have that feature yet. Wait for it :p")
 		sendMessage(fbModel, "Type \"rap\" to start a Request a Payment flow!")
 		return
 	}
