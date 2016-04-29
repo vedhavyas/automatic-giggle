@@ -27,10 +27,10 @@ type MessageModel struct {
 }
 
 type FBRecipient struct {
-	ID string `json:"id"`
+	ID int64 `json:"id"`
 }
 
 type FBPayload struct {
-	Recipient int64 `json:"recipient"`
-	Message string `json:"message"`
+	Recipient FBRecipient `json:"recipient"`
+	Message MessageModel `json:"message"`
 }
