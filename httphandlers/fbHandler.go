@@ -51,7 +51,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 		} else if len(s) == 2{
 			sendMessage(fbModel, "Enter amount")
 			return
-		} else {
+		} else if len(s) == 3{
 			sendMessage(fbModel, "Sending RAP")
 			requestPayment(fbModel, s)
 			w.WriteHeader(http.StatusOK)
