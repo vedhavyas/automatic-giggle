@@ -48,6 +48,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 			sendMessage(fbModel, "Sending RAP")
 			requestPayment(s)
 			read = false
+			sendMessage(fbModel, "RAP Sent :-D")
 			w.WriteHeader(http.StatusOK)
 			return
 		}
