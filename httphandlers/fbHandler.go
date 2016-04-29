@@ -38,6 +38,8 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 		return
 	} else if read {
 		if text == "cancel"{
+			s = nil
+			read = false
 			sendMessage(fbModel, "Okay, Done :-D")
 			sendMessage(fbModel, "Type \"rap\" to start a Request a Payment flow!")
 			return
@@ -62,6 +64,8 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else {
+		s = nil
+		read = false
 		sendMessage(fbModel, "I do not have that feature yet. Wait for it bitch :p")
 		sendMessage(fbModel, "Type \"rap\" to start a Request a Payment flow!")
 		return
