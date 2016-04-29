@@ -232,11 +232,15 @@ func pushToDropBox(w http.ResponseWriter, r *http.Request)  {
 }
 
 func fbHook(w http.ResponseWriter, r *http.Request) {
-	var b []byte
-	r.Body.Read(b)
 	fmt.Println(r)
 	fmt.Println(r.Body)
-	fmt.Println(string(b))
+	req,err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Println(err)
+	}else {
+		fmt.Println(string(req))
+	}
+	
 	w.WriteHeader(http.StatusOK)
 }
 
