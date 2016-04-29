@@ -24,10 +24,13 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	dat, _ :=json.MarshalIndent(fbModel,"", " ")
 	fmt.Println(string(dat))
 	text := fbModel.Entry[0].Messaging[0].Message.Text
-	if text == ""{
+	if text != "RAP"{
 		return
 	}
-
+	append(s, text)
+	for data := range s {
+		fmt.Println(data)
+	}
 	sendMessage(fbModel, text)
 }
 
