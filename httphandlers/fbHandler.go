@@ -88,7 +88,7 @@ func requestPayment(fbModel *models.FBModel, s []string) error {
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println(resp.StatusCode)
-	if resp.StatusCode != 201 {
+	if resp.StatusCode == 201 {
 		successRap := &models.RAPSuccess{}
 		json.NewDecoder(resp.Body).Decode(successRap)
 		sendMessage(fbModel, "RAP Sent :-D")
