@@ -55,8 +55,8 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else {
-		sendMessage(fbModel, "I did not have that feature yet. Wait for it bitch :p")
-		return 
+		sendMessage(fbModel, "I do not have that feature yet. Wait for it bitch :p")
+		return
 	}
 
 }
