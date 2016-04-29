@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"bytes"
 	"io/ioutil"
+	"strconv"
 )
 
 var pageToken = "EAAIOkn4DvqABAAaBaiZAXbxHHzEcYsEfrBBFM0QRAZC8ZCAZChKXMtlcK8wTSegMcJxv03fWRbPlOBF8mz460dB2HcJA8M8Ut8FYZBt0TiZBrZBwVRJZB0T1kxyGSLbj0P9tQsnoR3qwswDx0rlhdJQbQoZAc8WYidLUDyrDYmnFJ9QZDZD"
@@ -26,7 +27,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 func sendMessage(fbModel *models.FBModel, text string) {
 	url := "https://graph.facebook.com/v2.6/me/messages?access_token="+pageToken
 	message := models.MessageModel{Text:text}
-	recipient := models.FBRecipient{ID:fbModel.Entry[0].Messaging[0].Sender.ID}
+	recipient := models.FBRecipient{ID:strconv.FormatInt(fbModel.Entry[0].Messaging[0].Sender.ID, 10)}
 	payload := models.FBPayload{Message:message, Recipient: recipient}
 	data, _ := json.Marshal(payload)
 	fmt.Println(string(data))
