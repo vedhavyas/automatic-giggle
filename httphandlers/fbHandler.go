@@ -27,7 +27,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	if text != "RAP"{
 		return
 	}
-	append(s, text)
+	s = append(s, text)
 	for data := range s {
 		fmt.Println(data)
 	}
