@@ -93,7 +93,6 @@ func requestPayment(fbModel *models.FBModel, s []string) error {
 		json.NewDecoder(resp.Body).Decode(successRap)
 		sendMessage(fbModel, "RAP Sent :-D")
 	}else {
-		sendMessage(fbModel, "RAP Failed :(")
 		failureRAP := &models.RAPFailure{}
 		json.NewDecoder(resp.Body).Decode(failureRAP)
 		if len(failureRAP.Message.Amount) == 0{
