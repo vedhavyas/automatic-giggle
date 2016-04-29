@@ -1,1 +1,2 @@
 web: Instamojo++
+other: Instamojo++
