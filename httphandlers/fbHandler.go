@@ -33,6 +33,7 @@ func sendMessage(fbModel *models.FBModel, text string) {
 	fmt.Println(string(data))
 	req, _ := http.NewRequest("POST", url, bytes.NewReader(data))
 	client := http.Client{}
+	req.Header.Add("Content-Type", "application/json")
 	resp, err :=client.Do(req)
 	if err != nil {
 		fmt.Println(err)
