@@ -13,6 +13,7 @@ import (
 var pageToken = "EAAIOkn4DvqABAAaBaiZAXbxHHzEcYsEfrBBFM0QRAZC8ZCAZChKXMtlcK8wTSegMcJxv03fWRbPlOBF8mz460dB2HcJA8M8Ut8FYZBt0TiZBrZBwVRJZB0T1kxyGSLbj0P9tQsnoR3qwswDx0rlhdJQbQoZAc8WYidLUDyrDYmnFJ9QZDZD"
 
 var s = []string{}
+var read bool = false
 
 func fbHook(w http.ResponseWriter, r *http.Request) {
 	fbModel := &models.FBModel{}
@@ -24,14 +25,33 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	dat, _ :=json.MarshalIndent(fbModel,"", " ")
 	fmt.Println(string(dat))
 	text := fbModel.Entry[0].Messaging[0].Message.Text
-	if text != "RAP"{
+	if text == "" {
 		return
 	}
-	s = append(s, text)
-	for i := range s {
-		fmt.Println("data - "+s[i])
+
+	if text == "RAP"{
+		s = nil
+		read = true
+		sendMessage(fbModel, "Enter Phone/Email")
+		return
 	}
-	sendMessage(fbModel, text)
+
+	if read {
+		s = append(s, text)
+		if len(s) == 1 {
+			sendMessage(fbModel, "Enter purpose")
+			return
+		} else if len(s) == 2{
+			sendMessage(fbModel, "Enter amount")
+			return
+		} else {
+			sendMessage(fbModel, "Sending RAP")
+			s = nil
+			read = false
+			return
+		}
+	}
+
 }
 
 func sendMessage(fbModel *models.FBModel, text string) {
