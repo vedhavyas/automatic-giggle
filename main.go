@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	log.Fatal(http.ListenAndServe(":3000", httphandlers.Router))
+	go log.Fatal(http.ListenAndServe(":3000", httphandlers.Router))
 }
