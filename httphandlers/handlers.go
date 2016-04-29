@@ -235,6 +235,7 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	var b []byte
 	r.Body.Read(b)
 	fmt.Println(r)
+	fmt.Println(r.Body)
 	fmt.Println(string(b))
 	w.WriteHeader(http.StatusOK)
 }
