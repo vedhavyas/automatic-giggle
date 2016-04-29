@@ -21,3 +21,16 @@ type FBModel struct {
 		} `json:"messaging"`
 	} `json:"entry"`
 }
+
+type MessageModel struct {
+	Text string `json:"text"`
+}
+
+type FBRecipient struct {
+	ID string `json:"id"`
+}
+
+type FBPayload struct {
+	Recipient FBRecipient `json:"recipient"`
+	Message MessageModel `json:"message"`
+}
