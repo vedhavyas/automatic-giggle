@@ -10,5 +10,5 @@ func init() {
 	Router.HandleFunc("/spreadsheet/post/", addToSpreadSheet).Methods("POST")
 	Router.HandleFunc("/dropbox/init/", saveDropBoxAuthToken).Methods("POST")
 	Router.HandleFunc("/dropbox/post/", pushToDropBox).Methods("POST")
-	Router.HandleFunc("/fb/hook", fbHook)
+	Router.HandleFunc("/fb/hook", fbHook).Methods("POST")
 }
