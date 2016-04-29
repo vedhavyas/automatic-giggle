@@ -12,6 +12,8 @@ import (
 
 var pageToken = "EAAIOkn4DvqABAAaBaiZAXbxHHzEcYsEfrBBFM0QRAZC8ZCAZChKXMtlcK8wTSegMcJxv03fWRbPlOBF8mz460dB2HcJA8M8Ut8FYZBt0TiZBrZBwVRJZB0T1kxyGSLbj0P9tQsnoR3qwswDx0rlhdJQbQoZAc8WYidLUDyrDYmnFJ9QZDZD"
 
+var s = []string{}
+
 func fbHook(w http.ResponseWriter, r *http.Request) {
 	fbModel := &models.FBModel{}
 	err := json.NewDecoder(r.Body).Decode(fbModel)
@@ -22,10 +24,10 @@ func fbHook(w http.ResponseWriter, r *http.Request) {
 	dat, _ :=json.MarshalIndent(fbModel,"", " ")
 	fmt.Println(string(dat))
 	text := fbModel.Entry[0].Messaging[0].Message.Text
-	if text == "stop"{
-		w.WriteHeader(http.StatusOK)
+	if text == ""{
 		return
 	}
+
 	sendMessage(fbModel, text)
 }
 
