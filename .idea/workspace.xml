@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f980e7a5-7048-4f2e-9752-f2d5442ec1b8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/httphandlers/fbHandler.go" afterPath="$PROJECT_DIR$/httphandlers/fbHandler.go" />
-    </list>
+    <list default="true" id="f980e7a5-7048-4f2e-9752-f2d5442ec1b8" name="Default" comment="" />
     <ignored path="Instamojo++.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -42,7 +40,7 @@
       <file leaf-file-name="fbHandler.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/httphandlers/fbHandler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7008547">
+            <state vertical-scroll-proportion="1.1324786">
               <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
               <folding>
                 <element signature="e#22#155#0" expanded="true" />
@@ -675,7 +673,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/httphandlers/fbHandler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7008547">
+        <state vertical-scroll-proportion="1.1324786">
           <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
           <folding>
             <element signature="e#22#155#0" expanded="true" />
